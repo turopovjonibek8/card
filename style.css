@@ -1,0 +1,143 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.gallery{
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+
+.image{
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+.image img{
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-content{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+
+.gallery-menu{
+    /* border: 1px solid black; */
+    width: 50%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gallery-menu label{
+    border: 2px solid blue;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.gallery-menu label:hover{
+    background-color: blue;
+    color: white;
+}
+
+h4{
+    position: relative;
+}
+
+h4::before{
+    content: "";
+    position: absolute;
+    width: 80px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4px;
+    background-color: red;
+    animation: textanimat 1s infinite;
+}
+
+@keyframes textanimat{
+    0%{
+        width: 80px;
+    }
+    20%{
+        width: 100px;
+    }
+    40%{
+        width: 120px;
+    }
+    100%{
+        width: 80px;
+    }
+}
+
+
+
+#r1:checked ~ .gallery .gallery-content .image{
+    opacity: 1;
+}
+
+
+#r2:checked ~ .gallery .gallery-content .comp{
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+}
+
+#r2:checked ~ .gallery .gallery-content .phone,
+#r2:checked ~ .gallery .gallery-content .tv{
+    opacity: 0;
+    position: absolute;
+}
+
+input{
+    display: none;
+}
+
+
+
+
+.image::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    transform: scaleY(0);
+    transition: 0.5s;
+    transform-origin: top;
+}
+
+.image:hover::before{
+    transform: scaleY(1);
+}
+
+.image::after{
+    content: "Gallery";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    color: white;
+    margin-left: -100px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.image:hover::after{
+    opacity: 1;
+    margin-left: 0;
+    font: optional;
+}
